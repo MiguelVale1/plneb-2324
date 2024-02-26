@@ -104,7 +104,7 @@ print(variavel_valida("var_20"))
 #Exercício 8
 
 def inteiros(linha):
-    return [int(i) for i in re.findall(r"-?\d+[.,]?\d*", linha) if ('.' or ',') not in i]
+    return [int(i) for i in re.findall(r"-?\d+[.,]?\d*", linha) if '.' not in i and ',' not in i]
 
 print(inteiros("13 -9 7 -21 5 -12 22 -1 12 -5 90.90 -45.54"))
 #------------------------------------------
