@@ -1,7 +1,7 @@
 # TPC2
 
 Neste TPC foi proposta a resolução de uma ficha com problemas de expressões regulares, com a utilização de funções do módulo re, de regex.
-##Exercício 1
+## Exercício 1
 
 Para alcançar os objetivos pretendidos em cada exercício for criada em cada uma das alíneas, uma função que implementa funções de regex sobre a procura, manipulação, substituiçao, divisão, etc, de zonas de texto que se pretendem encontrar, esta função tem como parâmetro(s) a frase em questão e no caso de funções de substituição a string que se pretenda substituir. Finalmente esta aplica as alterações pretendidas e retorna os resultados, sendo que, nos casos de procura, apresenta 'True' se a string foi encontrada na frase e None se não foi encontrada.
 
