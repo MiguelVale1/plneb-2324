@@ -7,9 +7,6 @@ texto = re.sub(r'\f',"", texto)
 texto = re.sub(r'\n\n(.+)', r'\n\n@\1', texto)
 texto = re.sub(r'@(.+)\n\n@',r'@\1\n', texto)
 
-#conceitos = re.split(r'\n{2,}', texto)
-#termos = [tuple(conceito.split("\n", maxsplit=1)) for conceito in conceitos]
-
 termos = re.findall(r"@(.+)\n([^@]+)", texto)
 
 inicio ="""
