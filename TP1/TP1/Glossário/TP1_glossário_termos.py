@@ -5,7 +5,6 @@ import json
 def main():
     # Abrir ficheiros
     xml=open('glossário.xml','r', encoding='utf-8')
-    result = open('resultado.xml','w', encoding='utf-8')
     resultado = str(xml.read())
 
     # Alterações do XML
@@ -34,12 +33,11 @@ def main():
     resultado = re.sub(r' {2,}', r' ', resultado)# Substituir espaços a mais nas definições por um único espaço
     resultado = re.sub(r'<\/i><i>', r' ', resultado)# Substituir tags de itálico entre duas linhas da mesma frase por um espaço
     resultado = re.sub(r'<\/i>|<i>', r'', resultado)# Substituir tags de itálico restantes por vazio
-    #lista_def = re.split(r'\(pop\)', resultado)# Dividir todas as definições pelo marcador de separação (pop)
-    #lista_def.pop()# Remover o último separador vazio da lista de definições
-    result.write(resultado)
+    lista_def = re.split(r'\(pop\)', resultado)# Dividir todas as definições pelo marcador de separação (pop)
+    lista_def.pop()# Remover o último separador vazio da lista de definições
     
     # Função de ordenação alfabética
-"""def sorting(bold):
+    def sorting(bold):
         for i in bold:
             if i.lower() in 'abcdefghijklmnopqrstuvwxyz':
                 return i.upper()
@@ -52,15 +50,12 @@ def main():
         letra = sorting(l_bold)# Saber qual a primeira letra do termo
         if l_bold not in dicionario[letra]:# Se o termo ainda não pertence, adicioná-lo no dicionário, de modo a remover duplicados
             dicionario[letra][l_bold] = l_def
-    print(len(set(lista_bold)))
     # Ordenar os termos alfabéticamente
     for letra in dicionario:
         dicionario[letra] = dict(sorted(dicionario[letra].items(), key=lambda item: item[0].lower()))
 
-    print(len(dicionario))
     # Guardar o dicionário em Json
     with open('json_glossario_termos.json', 'w', encoding='utf-8') as ficheiro_json:
-        json.dump(dicionario, ficheiro_json, indent= 6, ensure_ascii= False)"""
-    
+        json.dump(dicionario, ficheiro_json, indent= 6, ensure_ascii= False)
 if __name__ == "__main__":
     main()
