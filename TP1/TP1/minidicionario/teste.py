@@ -15,7 +15,8 @@ texto = re.sub(r'<\/?text[^>]*>', r'', texto)
 
 # Agrupar termos e definições
 texto = re.sub(r'<\/b>\n<b>', r'', texto)
-texto = re.sub(r'<\/b>', r'', texto)
+texto = re.sub(r'<b>–</b>', r'', texto)
+texto = re.sub(r'<\/b>', r'£', texto)
 texto = re.sub(r'<b>', r'@', texto)
 texto = re.sub(r'\s?\n\s?', r'\n', texto)
 texto = re.sub(r'\n', r'', texto)
@@ -38,23 +39,22 @@ termo, definicao = [], []
 dic_en_pt, dic_pt_en = {}, {}
 
 for i in en_pt:
-        index = i.index('–')
-        termo.append(i[:index-1])
-        definicao.append(i[index+2:])
+        index = i.index('£')
+        termo.append(i[:index])
+        definicao.append(i[index+1:])
         dict_en_pt = { termo: definicao for termo, definicao in zip(termo, definicao)}
         
 termo.clear()
 definicao.clear()
 
 for i in pt_en:
-        index = i.index('–')
-        termo.append(i[:index-1])
-        definicao.append(i[index+2:])
+        index = i.index('£')
+        termo.append(i[:index])
+        definicao.append(i[index+1:])
         dict_pt_en = { termo: definicao for termo, definicao in zip(termo, definicao)}
 
 dicionario = {}
 dicionario["EN_PT"] = dict_en_pt
 dicionario["PT_EN"] = dict_pt_en
-
 with open('minidicionario.json', 'w', encoding='utf-8') as ficheiro_json:
     json.dump(dicionario, ficheiro_json, indent= 6, ensure_ascii= False)
