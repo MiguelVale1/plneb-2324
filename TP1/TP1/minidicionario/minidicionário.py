@@ -40,8 +40,8 @@ dic_en_pt, dic_pt_en = {}, {}
 
 for i in en_pt:
         index = i.index('£')
-        termo.append(i[:index])
-        definicao.append(i[index+1:])
+        termo.append(i[:index].strip())
+        definicao.append(i[index+1:].strip())
         dict_en_pt = { termo: definicao for termo, definicao in zip(termo, definicao)}
         
 termo.clear()
@@ -49,8 +49,8 @@ definicao.clear()
 
 for i in pt_en:
         index = i.index('£')
-        termo.append(i[:index])
-        definicao.append(i[index+1:])
+        termo.append(i[:index].strip())
+        definicao.append(i[index+1:].strip())
         dict_pt_en = { termo: definicao for termo, definicao in zip(termo, definicao)}
 
 dicionario = {}
